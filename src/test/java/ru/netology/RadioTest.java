@@ -13,6 +13,7 @@ public class RadioTest {
         radio.increaseVolumeForMax();
         assertEquals(10, radio.currentVolume);
     }
+
     @Test
     public void shouldVolumeMaxIncreaseCheck() {
         Radio radio = new Radio();
@@ -28,6 +29,7 @@ public class RadioTest {
         radio.decreaseVolumeForMin();
         assertEquals(0, radio.currentVolume);
     }
+
     @Test
     public void shouldVolumeMinDecreaseCheck() {
         Radio radio = new Radio();
@@ -43,6 +45,7 @@ public class RadioTest {
         radio.increaseVolume();
         assertEquals(10, radio.currentVolume);
     }
+
     @Test
     public void shouldVolumeHighBorderIncrease() {
         Radio radio = new Radio();
@@ -58,6 +61,7 @@ public class RadioTest {
         radio.decreaseVolume();
         assertEquals(0, radio.currentVolume);
     }
+
     @Test
     public void shouldVolumeBelowBorderDecrease() {
         Radio radio = new Radio();
@@ -73,6 +77,7 @@ public class RadioTest {
         radio.increaseStationForMax();
         assertEquals(0, radio.currentStation);
     }
+
     @Test
     public void shouldStationMaxIncreaseCheck() {
         Radio radio = new Radio();
@@ -88,6 +93,7 @@ public class RadioTest {
         radio.decreaseStationForMin();
         assertEquals(9, radio.currentStation);
     }
+
     @Test
     public void shouldStationMinDecreaseCheck() {
         Radio radio = new Radio();
@@ -104,6 +110,7 @@ public class RadioTest {
         radio.increaseStation();
         assertEquals(9, radio.currentStation);
     }
+
     @Test
     public void shouldStationHighBorderIncrease() {
         Radio radio = new Radio();
@@ -119,6 +126,7 @@ public class RadioTest {
         radio.decreaseStation();
         assertEquals(0, radio.currentStation);
     }
+
     @Test
     public void shouldStationBelowBorderDecrease() {
         Radio radio = new Radio();
@@ -134,6 +142,7 @@ public class RadioTest {
         radio.setcurrentStation(10);
         assertEquals(2, radio.currentStation);
     }
+
     @Test
     public void shouldSetStationBelowMin() {
         Radio radio = new Radio();
@@ -141,6 +150,7 @@ public class RadioTest {
         radio.setcurrentStation(-1);
         assertEquals(3, radio.currentStation);
     }
+
     @Test
     public void shouldSetStationNormal() {
         Radio radio = new Radio();
