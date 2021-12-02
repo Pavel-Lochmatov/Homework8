@@ -75,7 +75,7 @@ public class RadioTest {
         Radio radio = new Radio();
         radio.setCurrentStation(9);
         radio.increaseStationForMax();
-        assertEquals(0,radio.getCurrentStation());
+        assertEquals(0, radio.getCurrentStation());
     }
 
     @Test
@@ -108,7 +108,7 @@ public class RadioTest {
         Radio radio = new Radio();
         radio.setCurrentStation(8);
         radio.increaseStation();
-        assertEquals(9,radio.getCurrentStation());
+        assertEquals(9, radio.getCurrentStation());
     }
 
     @Test
