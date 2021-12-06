@@ -7,42 +7,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class RadioTest {
 
     @Test
-    //проверка увеличения громкости для максимальной если уже максимальная
-    public void shouldVolumeMaxIncrease() {
-        Radio radio = new Radio();
-        radio.setCurrentVolume(100);
-        radio.increaseVolumeForMax();
-        assertEquals(100, radio.getCurrentVolume());
-    }
-
-    @Test
-    //проверка увеличения громкости для максимальной если не максимальная
-    public void shouldVolumeMaxIncreaseCheck() {
-        Radio radio = new Radio();
-        radio.setCurrentVolume(3);
-        radio.increaseVolumeForMax();
-        assertEquals(3, radio.getCurrentVolume());
-    }
-
-    @Test
-    //проверка уменьшения громкости для минимальной если уже минимальная
-    public void shouldVolumeMinDecrease() {
-        Radio radio = new Radio();
-        radio.setCurrentVolume(0);
-        radio.decreaseVolumeForMin();
-        assertEquals(0, radio.getCurrentVolume());
-    }
-
-    @Test
-    //проверка уменьшения громкости для минимальной если не минимальная
-    public void shouldVolumeMinDecreaseCheck() {
-        Radio radio = new Radio();
-        radio.setCurrentVolume(2);
-        radio.decreaseVolumeForMin();
-        assertEquals(2, radio.getCurrentVolume());
-    }
-
-    @Test
     //проверка увеличения громкости для прегранич значения
     public void shouldVolumeBorderIncrease() {
         Radio radio = new Radio();
@@ -61,6 +25,15 @@ public class RadioTest {
     }
 
     @Test
+    //проверка увеличения громкости для значения больше максимального
+    public void shouldVolumeIncreaseHighMax() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(101);
+        radio.increaseVolume();
+        assertEquals(1, radio.getCurrentVolume());
+    }
+
+    @Test
     //проверка уменьшения громкости для прегранич значения
     public void shouldVolumeBorderDecrease() {
         Radio radio = new Radio();
@@ -74,6 +47,15 @@ public class RadioTest {
     public void shouldVolumeBelowBorderDecrease() {
         Radio radio = new Radio();
         radio.setCurrentVolume(0);
+        radio.decreaseVolume();
+        assertEquals(0, radio.getCurrentVolume());
+    }
+
+    @Test
+    //проверка уменьшения громкости для значения меньше минимального
+    public void shouldVolumeDecreaseBelowMin() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(-1);
         radio.decreaseVolume();
         assertEquals(0, radio.getCurrentVolume());
     }
@@ -96,43 +78,6 @@ public class RadioTest {
         assertEquals(4, radio.getCurrentVolume());
     }
 
-
-    @Test
-//проверка увеличения станции для максимальной если уже максимальная
-    public void shouldStationMaxIncrease() {
-        Radio radio = new Radio(10);
-        radio.setCurrentStation(9);
-        radio.increaseStationForMax();
-        assertEquals(0, radio.getCurrentStation());
-    }
-
-    @Test
-    //проверка увеличения станции для максимальной если не максимальная
-    public void shouldStationMaxIncreaseCheck() {
-        Radio radio = new Radio(10);
-        radio.setCurrentStation(3);
-        radio.increaseStationForMax();
-        assertEquals(3, radio.getCurrentStation());
-    }
-
-    @Test
-    //проверка уменьшения станции для минимальной если уже минимальная
-    public void shouldStationMinDecrease() {
-        Radio radio = new Radio(10);
-        radio.setCurrentStation(0);
-        radio.decreaseStationForMin();
-        assertEquals(9, radio.getCurrentStation());
-    }
-
-    @Test
-    //проверка уменьшения станции для минимальной если не минимальная
-    public void shouldStationMinDecreaseCheck() {
-        Radio radio = new Radio(10);
-        radio.setCurrentStation(2);
-        radio.decreaseStationForMin();
-        assertEquals(2, radio.getCurrentStation());
-    }
-
     @Test
     //проверка увеличения станции для прегранич значения
     public void shouldStationBorderIncrease() {
@@ -148,7 +93,16 @@ public class RadioTest {
         Radio radio = new Radio(10);
         radio.setCurrentStation(9);
         radio.increaseStation();
-        assertEquals(9, radio.getCurrentStation());
+        assertEquals(0, radio.getCurrentStation());
+    }
+
+    @Test
+    //проверка увеличения станции для значения больше максимального
+    public void shouldStationIncreaseHighMax() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(10);
+        radio.increaseStation();
+        assertEquals(1, radio.getCurrentStation());
     }
 
     @Test
@@ -166,7 +120,16 @@ public class RadioTest {
         Radio radio = new Radio(10);
         radio.setCurrentStation(0);
         radio.decreaseStation();
-        assertEquals(0, radio.getCurrentStation());
+        assertEquals(9, radio.getCurrentStation());
+    }
+
+    @Test
+    //проверка уменьшения станции для значения меньше минимального
+    public void shouldStationDecreaseBelowMin() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(-1);
+        radio.decreaseStation();
+        assertEquals(9, radio.getCurrentStation());
     }
 
     @Test

@@ -13,57 +13,45 @@ public class Radio {
     }
 
     public void increaseVolume() {
-        if (currentVolume < 100) {
+        if (currentVolume == 100) {
+            currentVolume = 100;
+        } else {
+
             currentVolume = currentVolume + 1;
+
         }
         return;
     }
 
     public void decreaseVolume() {
-        if (currentVolume > 0) {
+        if (currentVolume == 0) {
+            currentVolume = 0;
+        } else {
+
             currentVolume = currentVolume - 1;
+
         }
         return;
     }
 
     public void increaseStation() {
-        if (currentStation < countStations - 1) {
+        if (currentStation == countStations - 1) {
+            currentStation = 0;
+        } else {
+
             currentStation = currentStation + 1;
+
         }
         return;
     }
 
     public void decreaseStation() {
-        if (currentStation > 0) {
-            currentStation = currentStation - 1;
-        }
-        return;
-    }
-
-    public void increaseStationForMax() {
-        if (currentStation == countStations - 1) {
-            currentStation = 0;
-        }
-        return;
-    }
-
-    public void decreaseStationForMin() {
         if (currentStation == 0) {
             currentStation = countStations - 1;
-        }
-        return;
-    }
+        } else {
 
-    public void increaseVolumeForMax() {
-        if (currentVolume == 100) {
-            currentVolume = 100;
-        }
-        return;
-    }
+            currentStation = currentStation - 1;
 
-    public void decreaseVolumeForMin() {
-        if (currentVolume == 0) {
-            currentVolume = 0;
         }
         return;
     }
@@ -81,6 +69,7 @@ public class Radio {
     }
 
     public void setCurrentVolume(int currentVolume) {
+
         if (currentVolume > 100) {
             return;
         }
